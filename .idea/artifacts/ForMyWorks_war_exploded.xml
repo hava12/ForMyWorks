@@ -1,14 +1,14 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="ForMyWorks:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/ForMyWorks_war_exploded</output-path>
+    <output-path>$PROJECT_DIR$/target/recipelab-0.0.1-SNAPSHOT</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="ForMyWorks/web/Web" />
       <element id="directory" name="WEB-INF">
-        <element id="directory" name="classes">
-          <element id="module-output" name="ForMyWorks" />
-        </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="lib" />
+        </element>
+        <element id="directory" name="classes">
+          <element id="module-output" name="ForMyWorks" />
         </element>
       </element>
     </root>

@@ -1,7 +1,7 @@
-package main.java.config.initializer;
+package config.initializer;
 
-import main.java.config.AppConfig;
-import main.java.config.WebConfig;
+import config.AppConfig;
+import config.WebConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class DispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {

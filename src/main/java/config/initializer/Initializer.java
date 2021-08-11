@@ -1,4 +1,4 @@
-package main.java.config.initializer;
+package config.initializer;
 
 import org.springframework.web.WebApplicationInitializer;
 

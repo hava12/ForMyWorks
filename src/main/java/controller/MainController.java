@@ -11,4 +11,9 @@ public class MainController {
         return "main";
     }
 
+    @GetMapping("/format")
+    public String format(){
+        return "form/format";
+    }
+
 }

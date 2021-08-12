@@ -4,7 +4,7 @@ html, body{
     height: 100%;
 }
 .top-nav{
-    height: 130px;
+    height: 50px;
     width: 100%;
     padding: 5px 20px;
     box-sizing: border-box;
@@ -16,11 +16,17 @@ html, body{
     margin: 0;
     padding: 0;
     gap: 1em;
+    margin: 0 auto;
 }
 .top-nav ul li {
     text-align: center;
 }
-
+.top-nav ul li:nth-child(1){
+    margin-left: auto;
+}
+.top-nav ul li:nth-last-child(1){
+    margin-right: auto;
+}
 .menu li:hover{
     border-bottom: 2px solid #f66;
 }

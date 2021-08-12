@@ -1,5 +1,26 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
 .top-nav{
-    background-color: red;
-    height: 30px;
-    width: 380px;
+    height: 130px;
+    width: 100%;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    background-color: #fee;
+}
+.top-nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 1em;
+}
+.top-nav ul li {
+    text-align: center;
+}
+
+.menu li:hover{
+    border-bottom: 2px solid #f66;
 }

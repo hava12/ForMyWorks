@@ -35,6 +35,17 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new CommonInterceptor());
     }
 
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("styles/**")
+                .addResourceLocations("classpath:static/styles/")
+                .setCachePeriod(60 * 60 * 24 * 365);
+        registry.addResourceHandler("js/**")
+                .addResourceLocations("classpath:static/js/")
+                .setCachePeriod(60 * 60 * 24 * 365);
+    }
+
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver thymeleafViewResolver = new ThymeleafViewResolver();
@@ -54,8 +65,10 @@ public class WebConfig implements WebMvcConfigurer {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
         resolver.setApplicationContext(applicationContext);
         resolver.setSuffix(".html");
-        resolver.setPrefix("/WEB-INF/templates/");
+        resolver.setPrefix("classpath:static/templates/");
         resolver.setTemplateMode(TemplateMode.HTML);
         return resolver;
     }
+
+
 }

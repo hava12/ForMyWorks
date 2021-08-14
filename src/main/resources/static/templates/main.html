@@ -7,12 +7,6 @@
     <link rel="stylesheet" th:href="@{/styles/style.css}"/>
 </head>
 <body>
-    <nav class="top-nav">
-        <ul>
-            <li><a th:href="@{/format}"> 포맷 수정 </a></li>
-            <li>22</li>
-            <li>33</li>
-        </ul>
-    </nav>
+    <nav th:replace="fragments/topnav :: top-nav" />
 </body>
 </html>

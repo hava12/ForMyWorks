@@ -30,3 +30,16 @@ html, body{
 .menu li:hover{
     border-bottom: 2px solid #f66;
 }
+.container {
+    border: 1px solid black;
+    margin: 30px auto;
+    width: 95%;
+    height: 95%;
+}
+
+.xml-table {
+    margin-top: 30px;
+}
+.xml-table th {
+    background-color: gainsboro;
+}

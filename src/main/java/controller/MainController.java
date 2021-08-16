@@ -2,8 +2,11 @@ package controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -36,8 +39,18 @@ public class MainController {
         //Optional<Stream<Map<String, String>>> stream = Optional.empty();
 
         model.addAttribute("list", list);
-        return "form/format";
+        return "format/format";
+    }
 
+    @PostMapping("/format/file")
+    @ResponseBody
+    public String formatFile(@RequestParam("file") MultipartFile multipartFile) throws IOException {
+
+        System.out.println(multipartFile.getInputStream());
+        File file = new File(multipartFile.getOriginalFilename());
+        multipartFile.transferTo(file);
+        System.out.println(file.getAbsolutePath());
+        return "";
     }
 
 }

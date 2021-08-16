@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.spring5.ISpringTemplateEngine;
@@ -74,5 +76,10 @@ public class WebConfig implements WebMvcConfigurer {
         return resolver;
     }
 
+    @Bean
+    public MultipartResolver multipartResolver(){
+        StandardServletMultipartResolver multipartResolver = new StandardServletMultipartResolver();
+        return multipartResolver;
+    }
 
 }

@@ -15,11 +15,13 @@ function handleFiles() {
     fetch("/format/file", {
         method: "POST",
         body: formData
-    }).then(
-        alert("123123")
-    ).catch(
-        alert("error발생")
-    );
+    }).then((res) => res.json())
+    .then((response) => {
+        const resJson = JSON.stringify(response);
+
+    }).catch((e) => {
+        alert("error")
+    });
 
 }
 

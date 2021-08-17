@@ -55,11 +55,8 @@ public class FormatController {
     @ResponseBody
     public String formatFile(@RequestParam("file") MultipartFile multipartFile) throws IOException {
         JSONObject xmlJson = excelUtil.getXmlToJson(multipartFile);
-        //File file = new File(multipartFile.getOriginalFilename());
-        //multipartFile.transferTo(file);
-        //System.out.println(file.getAbsolutePath());
-
-        return "xmlJson.toJSONString()";
+        System.out.println(xmlJson.toJSONString());
+        return xmlJson.toJSONString();
     }
 
 }

@@ -6,6 +6,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -52,17 +53,19 @@ public class ExcelUtil {
     public JSONObject readXmlFile() throws IOException {
         Sheet workSheet = workbook.getSheetAt(0);
         int rowSize = workSheet.getPhysicalNumberOfRows();
-        System.out.println(workSheet.getPhysicalNumberOfRows());
-        System.out.println(workSheet.getLastRowNum());
+
+        JSONArray jsonArray = new JSONArray();
+        JSONObject jsonObject = new JSONObject();
+
         for (int i = 1; i < rowSize; i++) {
             Row row = workSheet.getRow(i);
             Cell nameCell = row.getCell(0);
             Cell lengthCell = row.getCell(1);
-            Cell valueCell = row.getCell(2);
-            System.out.println("nameCell : " + getCellValue(nameCell));
-            System.out.println("lengthCell : " + getCellValue(lengthCell));
+            String nameCellValue = getCellValue(nameCell);
+            String lengthCellValue = getCellValue(lengthCell);
+            jsonObject.put(nameCellValue, lengthCellValue);
         }
-        return null;
+        return jsonObject;
     }
 
     private String getCellValue(Cell cell) {
@@ -75,7 +78,6 @@ public class ExcelUtil {
 
     public JSONObject getXmlToJson(MultipartFile multipartFile) throws IOException {
         init(multipartFile);
-        readXmlFile();
-        return null;
+        return readXmlFile();
     }
 }

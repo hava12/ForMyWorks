@@ -37,8 +37,12 @@ html, body{
     height: 95%;
 }
 
-.xml-table, .general-table {
+.form-table, .general-table {
     margin-top: 30px;
     margin-left: 30px;
     margin-right: 30px;
+}
+
+.form-table td {
+    width: 250px;
 }

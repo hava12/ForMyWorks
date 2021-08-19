@@ -10,16 +10,34 @@ function handleFiles() {
     for (let i = 0, numFiles = fileList.length; i < numFiles; i++) {
         formData.append('file', fileList[i]);
     }
-    console.log(formData);
 
     fetch("/format/file", {
         method: "POST",
         body: formData
     }).then((res) => res.json())
-    .then((response) => {
-        const resJson = JSON.stringify(response);
+        .then((response) => {
+            const table = document.querySelector("#form-table");
+            let tr = null
+            let nameTd = null
+            let valueTd = null
+            let inputText = null
 
-    }).catch((e) => {
+            response.forEach((item) => {
+                tr = document.createElement("tr")
+                nameTd = document.createElement("td")
+                valueTd = document.createElement("td")
+                inputText = document.createElement("input")
+
+                inputText.setAttribute("type","text");
+                inputText.setAttribute("maxlength",item.length);
+                nameTd.innerText = item.name;
+
+                valueTd.appendChild(inputText);
+                tr.appendChild(nameTd);
+                tr.appendChild(valueTd);
+                table.appendChild(tr);
+            })
+        }).catch((e) => {
         alert("error")
     });
 

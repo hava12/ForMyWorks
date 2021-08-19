@@ -50,7 +50,7 @@ public class ExcelUtil {
         }
     }
 
-    public JSONObject readXmlFile() throws IOException {
+    public JSONArray readXmlFile() throws IOException {
         Sheet workSheet = workbook.getSheetAt(0);
         int rowSize = workSheet.getPhysicalNumberOfRows();
 
@@ -58,14 +58,18 @@ public class ExcelUtil {
         JSONObject jsonObject = new JSONObject();
 
         for (int i = 1; i < rowSize; i++) {
+            jsonObject = new JSONObject();
             Row row = workSheet.getRow(i);
             Cell nameCell = row.getCell(0);
             Cell lengthCell = row.getCell(1);
             String nameCellValue = getCellValue(nameCell);
             String lengthCellValue = getCellValue(lengthCell);
-            jsonObject.put(nameCellValue, lengthCellValue);
+            jsonObject.put("name", nameCellValue);
+            jsonObject.put("length", lengthCellValue);
+            jsonArray.add(jsonObject);
+
         }
-        return jsonObject;
+        return jsonArray;
     }
 
     private String getCellValue(Cell cell) {
@@ -76,7 +80,7 @@ public class ExcelUtil {
         }
     }
 
-    public JSONObject getXmlToJson(MultipartFile multipartFile) throws IOException {
+    public JSONArray getXmlToJsonArray(MultipartFile multipartFile) throws IOException {
         init(multipartFile);
         return readXmlFile();
     }

@@ -1,6 +1,7 @@
 package controller.format;
 
 import config.component.file.ExcelUtil;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,7 +55,7 @@ public class FormatController {
     @PostMapping("/format/file")
     @ResponseBody
     public String formatFile(@RequestParam("file") MultipartFile multipartFile) throws IOException {
-        JSONObject xmlJson = excelUtil.getXmlToJson(multipartFile);
+        JSONArray xmlJson = excelUtil.getXmlToJsonArray(multipartFile);
         System.out.println(xmlJson.toJSONString());
         return xmlJson.toJSONString();
     }

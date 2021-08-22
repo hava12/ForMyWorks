@@ -8,25 +8,38 @@
     <script type="text/javascript" th:src="@{/js/format.js}"></script>
 </head>
 <body>
-<nav th:replace="fragments/topnav :: top-nav" />
+<nav th:replace="fragments/topnav :: top-nav"/>
 
 <section class="container">
     <form>
         <table class="general-table">
             <tr>
                 <th></th>
-                <td><input type="file" id="formatFile" /></td>
+                <td><input type="file" id="formatFile"/></td>
             </tr>
         </table>
         <table class="form-table" id="form-table">
-
         </table>
-<!--        <table class="xml-table">-->
-<!--            <tr th:each="item : ${list}">-->
-<!--                <th th:text="${item.key}"></th>-->
-<!--                <td><input type="text" th:value="${item.key}"></td>-->
-<!--            </tr>-->
-<!--        </table>-->
+        <table class="general-table">
+            <tr>
+                <td>
+                    <label for="ip">테스트 IP</label>
+                    <input type="text" id="ip" name="ip">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="port">테스트 PORT</label>
+                    <input type="text" id="port" name="port">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button">테스트</button>
+                </td>
+            </tr>
+        </table>
+
     </form>
 </section>
 </body>

@@ -16,6 +16,9 @@ function handleFiles() {
         body: formData
     }).then((res) => res.json())
         .then((response) => {
+
+            saveJsonFile(response);
+
             const table = document.querySelector("#form-table");
             let tr = null
             let nameTd = null
@@ -40,6 +43,17 @@ function handleFiles() {
         }).catch((e) => {
         alert("error")
     });
-
 }
 
+function saveJsonFile(jsonData) {
+    if(confirm("해당 파일 포맷을 저장하시겠습니까?")){
+        alert(jsonData);
+        fetch("/format/save",{
+            method: "POST",
+            body: jsonData
+        }).then((res)=>res.json())
+        .then((response) => {
+            alert(response);
+        })
+    }
+}

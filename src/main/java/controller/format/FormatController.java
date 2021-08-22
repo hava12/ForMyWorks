@@ -4,12 +4,10 @@ import config.component.file.ExcelUtil;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -56,8 +54,13 @@ public class FormatController {
     @ResponseBody
     public String formatFile(@RequestParam("file") MultipartFile multipartFile) throws IOException {
         JSONArray xmlJson = excelUtil.getXmlToJsonArray(multipartFile);
-        System.out.println(xmlJson.toJSONString());
         return xmlJson.toJSONString();
     }
 
+    @PostMapping("/format/save")
+    @ResponseBody
+    public ResponseEntity formatSave(@RequestBody String body) throws Exception  {
+
+        return null;
+    }
 }

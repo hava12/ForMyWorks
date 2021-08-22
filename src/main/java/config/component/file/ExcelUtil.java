@@ -55,7 +55,7 @@ public class ExcelUtil {
         int rowSize = workSheet.getPhysicalNumberOfRows();
 
         JSONArray jsonArray = new JSONArray();
-        JSONObject jsonObject = new JSONObject();
+        JSONObject jsonObject;
 
         for (int i = 1; i < rowSize; i++) {
             jsonObject = new JSONObject();
@@ -67,8 +67,8 @@ public class ExcelUtil {
             jsonObject.put("name", nameCellValue);
             jsonObject.put("length", lengthCellValue);
             jsonArray.add(jsonObject);
-
         }
+
         return jsonArray;
     }
 

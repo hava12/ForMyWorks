@@ -1,9 +1,11 @@
 package controller.format;
 
 import config.component.file.ExcelUtil;
+import config.component.file.FileUtil;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,10 +22,12 @@ import java.util.Map;
 public class FormatController {
 
     private final ExcelUtil excelUtil;
+    private final FileUtil fileUtil;
 
     @Autowired
-    public FormatController(ExcelUtil excelUtil) {
+    public FormatController(ExcelUtil excelUtil, FileUtil fileUtil) {
         this.excelUtil = excelUtil;
+        this.fileUtil = fileUtil;
     }
 
     @GetMapping("/format")
@@ -52,15 +56,15 @@ public class FormatController {
 
     @PostMapping("/format/file")
     @ResponseBody
-    public String formatFile(@RequestParam("file") MultipartFile multipartFile) throws IOException {
+    public ResponseEntity<String> formatFile(@RequestParam("file") MultipartFile multipartFile) throws IOException {
         JSONArray xmlJson = excelUtil.getXmlToJsonArray(multipartFile);
-        return xmlJson.toJSONString();
+        return new ResponseEntity(xmlJson.toJSONString(), HttpStatus.OK);
     }
 
     @PostMapping("/format/save")
     @ResponseBody
     public ResponseEntity formatSave(@RequestBody String body) throws Exception  {
-
-        return null;
+        fileUtil.stringToFile("./json/"+"fileName.json");
+        return new ResponseEntity("Sdfasdf", HttpStatus.OK);
     }
 }

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Format</title>
+    <link rel="stylesheet" th:href="@{/styles/style.css}"/>
+    <script type="text/javascript" th:src="@{/js/format.js}"></script>
+</head>
+<body>
+<nav th:replace="fragments/topnav :: top-nav"/>
+
+<section class="container">
+    <form>
+        <table class="general-table">
+            <tr>
+                <th></th>
+                <td><input type="file" id="formatFile"/></td>
+            </tr>
+        </table>
+        <table class="form-table" id="form-table">
+        </table>
+        <table class="general-table">
+            <tr>
+                <td>
+                    <label for="ip">테스트 IP</label>
+                    <input type="text" id="ip" name="ip">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="port">테스트 PORT</label>
+                    <input type="text" id="port" name="port">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button">테스트</button>
+                </td>
+            </tr>
+        </table>
+
+    </form>
+</section>
+</body>
+</html>
